@@ -4,8 +4,8 @@ import { Navbar } from '../navbar';
 export function App() {
   return (
     <div>
-      <Navbar />
-      Hello REKAAA
+      <Navbar elements={[<div>elm1</div>, <div>elm2</div>, <div>elm3</div>]} />
+      <p style={{ height: '200vh' }}>Hello REKAAA</p>
     </div>
   );
 }

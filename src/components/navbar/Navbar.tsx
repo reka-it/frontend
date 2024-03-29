@@ -2,7 +2,13 @@ import React from 'react';
 import { useState, useEffect } from 'react'
 import './Navbar.css';
 
-export function Navbar() {
+type NavbarProps = {
+  elements?: JSX.Element[];
+};
+
+export function Navbar({
+  elements
+}: NavbarProps) {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -21,16 +27,23 @@ export function Navbar() {
   }, []);
 
   return (
-    <div className='navbar'>
-      <div className='logo'>Logo</div>
-      <div className={'content' + (dropdownOpen ? ' open' : '')}>
-        <div className='content-item'><div>elm1</div></div>
-        <div className='content-item'><div>elm2</div></div>
-        <div className='content-item'><div>elm3</div></div>
+    <div>
+      <div className='spacer'></div>
+      <div className='navbar'>
+        <div className='logo'>Logo</div>
+        <div className={'content' + (dropdownOpen ? ' open' : '')}>
+        {
+          elements?.map((element) => 
+            <div className='content-item'>
+              {element}
+            </div>
+          )
+        }
+        </div>
+        {isMobile && <div className='menu' onClick={e => {
+          setDropdownOpen(!dropdownOpen);
+        }}></div>}
       </div>
-      {isMobile && <div className='menu' onClick={e => {
-        setDropdownOpen(!dropdownOpen);
-      }}></div>}
     </div>
   );
 }
