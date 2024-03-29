@@ -2,9 +2,13 @@
   outline: 1px solid red;
 }
 
+.wrapper {
+  position: relative;
+}
+
 .navbar {
   z-index: 1000;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -102,4 +106,8 @@
 
 .spacer {
   height: 4rem;
+}
+
+.sticky {
+  position: fixed;
 }
