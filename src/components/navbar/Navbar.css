@@ -46,6 +46,7 @@
 }
 
 .content-item > * {
+  cursor: pointer;
   flex-grow: 0;
   padding: 0.5rem;
   text-align: center;
