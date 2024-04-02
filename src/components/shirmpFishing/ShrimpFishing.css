@@ -1,0 +1,36 @@
+.wrapper {
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1.6;
+  padding: 1rem;
+  background-color: #fd7a00;
+  border-radius: 1rem;
+
+  max-width: 10vw;
+}
+
+.shrimp {
+  position: fixed;
+  top: 0%;
+  outline: 1px solid red;
+  animation: sink 10s linear infinite;
+}
+
+.shrimp:hover {
+  transform: scale(1.1);
+}
+
+.shrimp-icon {
+  min-width: 10rem;
+  min-height: 10rem;
+}
+
+/* Shrimp sink animation */
+@keyframes sink {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(300vh);
+  }
+}
