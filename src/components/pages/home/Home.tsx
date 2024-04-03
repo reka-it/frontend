@@ -128,19 +128,18 @@ export function Home() {
       </div>
 
       <Navbar elements={[
-        <div>Arangement</div>, 
-        <div>Hype</div>, 
-        <div
-          onClick={(e) => {
+        {inner: <div>Program</div>},
+        {inner: <div>Hype</div>},
+        { 
+          inner: <div>Kart</div>,
+          action: (e: React.MouseEvent) => {
             e.preventDefault();
             mapRef.current?.scrollIntoView({ 
               behavior: 'smooth', 
               block: 'start'
             });
-          }}
-        >
-          Kart
-        </div>
+          }
+        }
       ]}/>
 
       <div className={styles.page_content}> 
