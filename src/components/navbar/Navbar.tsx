@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect, useCallback} from 'react'
-import './Navbar.css';
+import styles from './Navbar.module.css';
 
 type NavbarProps = {
   className?: string;
@@ -49,20 +49,20 @@ export function Navbar({
   }, [handleScroll]);
 
   return (
-    <div className='wrapper'>
-      <div className='spacer' ref={spacerRef}></div>
-      <div className={'navbar' + (isSticky ? ' sticky' : '') + ' ' + className}>
-        <div className='logo'>Logo</div>
-        <div className={'content' + (dropdownOpen ? ' open' : '')}>
+    <div className={styles.wrapper}>
+      <div className={styles.spacer} ref={spacerRef}></div>
+      <div className={styles.navbar + ' ' + (isSticky ? styles.sticky : '') + ' ' + className}>
+        <div className={styles.logo}>Logo</div>
+        <div className={styles.content + ' ' + (dropdownOpen ? styles.open : '')}>
         {
           elements?.map((element, key) => 
-            <div className='content-item' key={key}>
+            <div className={styles.content_item} key={key}>
               {element}
             </div>
           )
         }
         </div>
-        {isMobile && <div className='menu' onClick={e => {
+        {isMobile && <div className={styles.menu} onClick={e => {
           setDropdownOpen(!dropdownOpen);
         }}></div>}
       </div>
