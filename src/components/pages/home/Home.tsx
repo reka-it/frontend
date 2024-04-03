@@ -1,10 +1,9 @@
-import React, { useEffect, useRef } from 'react';
 import { Navbar } from '../../navbar';
 import { Map } from './map';
 import introImage from '../../../resources/REKA_22.jpg';
 import backgruond from '../../../resources/background_shrimp.png';
 import { ReactComponent as ShrimpImage } from '../../../resources/shrimp.svg';
-import './Home.css';
+import styles from './Home.module.css';
 
 
 // ---------------------------------------- //
@@ -41,7 +40,7 @@ const introShrimp = (
 
     // Return a shrimp image with the calculated styles
     return <ShrimpImage 
-      className='intro-card-shrimp' 
+      className={styles.intro_card_shrimp}
       key={index} 
       style={{
         width: `${introShrimpSize}vw`,
@@ -77,7 +76,7 @@ const contactInfo: ContactInfo[] = [
 
 const contactInfoElements = contactInfo.map((info, index) => (
     <a 
-      className='contact-item' 
+      className={styles.contact_item}
       key={index} 
       href={info.href}
       target='_blank'
@@ -94,33 +93,33 @@ export function Home() {
   return (
     <div>
 
-      <div className='backgruond'><img className='backgruond-img' src={backgruond} alt="Backgruond" /></div>
-      <div className='intro-card'>
-        <img className='intro-card-img' src={introImage} alt="Reka 2022" />
+      <div className={styles.backgruond}><img className={styles.backgruond_img} src={backgruond} alt="Backgruond" /></div>
+      <div className={styles.intro_card}>
+        <img className={styles.intro_card_img} src={introImage} alt="Reka 2022" />
         {introShrimp}
       </div>
 
       <Navbar elements={[<div>Arangement</div>, <div>Hype</div>, <div>Kart</div>]} />
 
-      <div className='page-content'> 
+      <div className={styles.page_content}> 
 
-        <div className='header'>Kart</div>
-        <div className='map-container'>
+        <div className={styles.header}>Kart</div>
+        <div className={styles.map_container}>
           <Map/>
         </div>
-        
+
         <p style={{ height: '200vh' }}>Hello REKAAA</p>
       </div>
   
-      <div className='footer'>
-        <div className='footer-content'>
-          <div className='contact'>
+      <div className={styles.footer}>
+        <div className={styles.footer_content}>
+          <div className={styles.contact}>
             {contactInfoElements}
           </div>
-          <div className='partners'>
-            <div className='partner-item'>Equinor pls bby</div>
-            <div className='partner-item'>Equinor pls bby</div>
-            <div className='partner-item'>Equinor pls bby</div>
+          <div className={styles.partners}>
+            <div className={styles.partners_item}>Equinor pls bby</div>
+            <div className={styles.partners_item}>Equinor pls bby</div>
+            <div className={styles.partners_item}>Equinor pls bby</div>
           </div>
         </div>
       </div>

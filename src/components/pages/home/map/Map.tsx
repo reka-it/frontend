@@ -1,7 +1,7 @@
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import { LatLngExpression } from 'leaflet';
 import "leaflet/dist/leaflet.css";
-import './Map.css';
+import styles from  './Map.module.css';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import icon from 'leaflet/dist/images/marker-icon.png';
@@ -36,7 +36,7 @@ const Markers: Position[] = [
 
 export const Map = () => {
   return (
-    <MapContainer className='map' center={Origin} zoom={18} scrollWheelZoom={false}>
+    <MapContainer className={styles.map} center={Origin} zoom={18} scrollWheelZoom={false}>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

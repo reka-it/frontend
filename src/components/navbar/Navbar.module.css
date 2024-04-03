@@ -39,7 +39,7 @@
   background-color: #3F6ED1;
 }
 
-.content-item {
+.content_item {
   flex-grow: 1;
   height: 100%;
   display: flex;
@@ -47,7 +47,7 @@
   align-items: center;
 }
 
-.content-item > * {
+.content_item > * {
   cursor: pointer;
   flex-grow: 0;
   padding: 0.5rem;
@@ -58,7 +58,7 @@
   border-radius: 0.5rem;
 }
 
-.content-item > *:hover {
+.content_item > *:hover {
   flex-grow: 1;
 }
 
@@ -95,7 +95,7 @@
     justify-content: center;
   }
 
-  .content-item {
+  .content_item {
     flex-grow: 0;
     height: auto;
     width: 75%;
