@@ -1,8 +1,9 @@
 import React from 'react';
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback} from 'react'
 import './Navbar.css';
 
 type NavbarProps = {
+  className?: string;
   elements?: JSX.Element[];
 };
 
@@ -16,6 +17,7 @@ function getOffsetTop(element: HTMLElement | null): number {
 }
 
 export function Navbar({
+  className = '',
   elements
 }: NavbarProps) {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -23,56 +25,33 @@ export function Navbar({
   const spacerRef = React.useRef<HTMLDivElement>(null);
 
   const [stickyHeight, setStickyHeight] = useState(0);
-  // Set the stickyHeight to the top offset of the spacer element and add resize listener to update the stickyHeight
+  const handleResize = () => {
+    setStickyHeight(getOffsetTop(spacerRef.current));
+    setIsMobile(window.innerWidth <= 768);
+  };
+  const [isSticky, setIsSticky] = useState(false);
+  const handleScroll = useCallback(() => {
+    setIsSticky(window.scrollY >= stickyHeight);
+  }, [stickyHeight]);
+
+  // Init
   useEffect(() => {
-    const handleResize = () => {
-      setStickyHeight(getOffsetTop(spacerRef.current));
-      console.log(spacerRef.current);
-    };
     window.addEventListener('resize', handleResize);
+    window.addEventListener('scroll', handleScroll);
 
     handleResize();
 
     return () => {
       window.removeEventListener('resize', handleResize);
-    };
-
-  }, []);
-
-  const [isSticky, setIsSticky] = useState(false);
-  // Add a listener for window scroll events
-  useEffect(() => {
-    // Add a listener for window scroll events
-    const handleScroll = () => {
-      setIsSticky(window.scrollY >= stickyHeight);
-      console.log(window.scrollY, stickyHeight);
-    };
-    window.addEventListener('scroll', handleScroll);
-    
-    // Clean up the listener when the component is unmounted
-    return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [stickyHeight]);
 
-  // Add a listener for window resize events
-  useEffect(() => {
-    // Add a listener for window resize events
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    window.addEventListener('resize', handleResize);
-    
-    // Clean up the listener when the component is unmounted
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+  }, [handleScroll]);
 
   return (
     <div className='wrapper'>
       <div className='spacer' ref={spacerRef}></div>
-      <div className={'navbar' + (isSticky ? ' sticky' : '')}>
+      <div className={'navbar' + (isSticky ? ' sticky' : '') + ' ' + className}>
         <div className='logo'>Logo</div>
         <div className={'content' + (dropdownOpen ? ' open' : '')}>
         {
