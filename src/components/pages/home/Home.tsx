@@ -1,3 +1,4 @@
+import React, { useRef } from 'react';
 import { Navbar } from '../../navbar';
 import { Map } from './map';
 import introImage from '../../../resources/REKA_22.jpg';
@@ -87,9 +88,36 @@ const contactInfoElements = contactInfo.map((info, index) => (
 ));
 
 // ---------------------------------------- //
+//                 Historie                 //
+// ---------------------------------------- //
+type HistoryItem = {
+  title: string;
+  description: string;
+  image: string;
+}
+
+const historyItems: HistoryItem[] = [
+  {
+    title: 'Reka 2021',
+    description: 'Dette var en fantastisk reka! Vi hadde det så gøy at vi glemte å ta bilder...',
+    image: '',
+  }, {
+    title: 'Reka 2020',
+    description: 'Dette var en fantastisk reka! Vi hadde det så gøy at vi glemte å ta bilder...',
+    image: '',
+  }, {
+    title: 'Reka 2019',
+    description: 'Dette var en fantastisk reka! Vi hadde det så gøy at vi glemte å ta bilder...',
+    image: '',
+  }
+];
+
+// ---------------------------------------- //
 //                Home page                 //
 // ---------------------------------------- //
 export function Home() {
+  const mapRef = useRef<HTMLDivElement>(null);
+
   return (
     <div>
 
@@ -99,16 +127,45 @@ export function Home() {
         {introShrimp}
       </div>
 
-      <Navbar elements={[<div>Arangement</div>, <div>Hype</div>, <div>Kart</div>]} />
+      <Navbar elements={[
+        <div>Arangement</div>, 
+        <div>Hype</div>, 
+        <div
+          onClick={(e) => {
+            e.preventDefault();
+            mapRef.current?.scrollIntoView({ 
+              behavior: 'smooth', 
+              block: 'start'
+            });
+          }}
+        >
+          Kart
+        </div>
+      ]}/>
 
       <div className={styles.page_content}> 
 
-        <div className={styles.header}>Kart</div>
-        <div className={styles.map_container}>
+        <div className={styles.page_header}>Hva for noe er egt reka?</div>
+        <div className={styles.page_item}>
+          <p>Reka er en årlig tradisjon hvor vi samles for å spise reker, drikke øl og ha det gøy. Vi har også en rekke aktiviteter, konkurranser og underholdning som vi gleder oss til å dele med deg! Føl viberasjonene med dette spillet:</p>
+        </div>
+
+        <div className={styles.page_header}>Noe av det vi har kost oss med!</div>
+        <div className={styles.history_container + ' ' + styles.page_item}>
+          {historyItems.map((item, index) => 
+            <div className={styles.history_item} key={index}>
+              <div className={styles.history_title}>{item.title}</div>
+              <div className={styles.history_description}>{item.description}</div>
+              <img className={styles.history_image} src={item.image} alt={item.title} />
+            </div>
+          )}
+        </div>
+
+        <div className={styles.page_header} ref={mapRef}>Gått deg bort? Følg reke lukten!</div>
+        <div className={styles.map_container + ' ' +  styles.page_item}>
           <Map/>
         </div>
 
-        <p style={{ height: '200vh' }}>Hello REKAAA</p>
       </div>
   
       <div className={styles.footer}>
