@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { Navbar } from '../../navbar';
-import { Map } from './map';
+import { Map } from '../../map';
 import introImage from '../../../resources/REKA_22.jpg';
 import backgruond from '../../../resources/background_shrimp.png';
 import { ReactComponent as ShrimpImage } from '../../../resources/shrimp.svg';
@@ -145,25 +145,31 @@ export function Home() {
 
       <div className={styles.page_content}> 
 
-        <div className={styles.page_header}>Hva for noe er egt reka?</div>
         <div className={styles.page_item}>
-          <p>Reka er en årlig tradisjon hvor vi samles for å spise reker, drikke øl og ha det gøy. Vi har også en rekke aktiviteter, konkurranser og underholdning som vi gleder oss til å dele med deg! Føl viberasjonene med dette spillet:</p>
+          <div className={styles.page_header}>Hva for noe er egt reka?</div>
+          <p>Reka er verdens beste kulturfestival av og for frivillige. Det har blitt er en årlig tradisjon at vi samles for å spise reker, drikke øl og ha det gøy. Vi har også en rekke aktiviteter, konkurranser og underholdning som vi gleder oss til å dele med deg! Føl viberasjonene med dette reke spillet:</p>
+          <div>Rekefisking kommer!</div>
         </div>
 
-        <div className={styles.page_header}>Noe av det vi har kost oss med!</div>
-        <div className={styles.history_container + ' ' + styles.page_item}>
-          {historyItems.map((item, index) => 
-            <div className={styles.history_item} key={index}>
-              <div className={styles.history_title}>{item.title}</div>
-              <div className={styles.history_description}>{item.description}</div>
-              <img className={styles.history_image} src={item.image} alt={item.title} />
-            </div>
-          )}
+        <div className={styles.page_item}>
+          <div className={styles.page_header}>Noe av det vi har kost oss med!</div>
+          <div className={styles.history_container}>
+            {historyItems.map((item, index) => 
+              <div className={styles.history_item} key={index}>
+                <div className={styles.history_title}>{item.title}</div>
+                <div className={styles.history_description}>{item.description}</div>
+                <img className={styles.history_image} src={item.image} alt={item.title} />
+              </div>
+            )}
+          </div>
         </div>
 
-        <div className={styles.page_header} ref={mapRef}>Gått deg bort? Følg reke lukten!</div>
-        <div className={styles.map_container + ' ' +  styles.page_item}>
-          <Map/>
+        <div className={styles.page_item}>
+          <div className={styles.ref_anchor} ref={mapRef}></div>
+          <div className={styles.page_header}>Gått deg bort? Følg reke lukten!</div>
+          <div className={styles.map_container}>
+            <Map/>
+          </div>
         </div>
 
       </div>
