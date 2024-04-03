@@ -1,5 +1,6 @@
+import React, { useRef } from 'react';
 import { Navbar } from '../../navbar';
-import { Map } from './map';
+import { Map } from '../../map';
 import introImage from '../../../resources/REKA_22.jpg';
 import backgruond from '../../../resources/background_shrimp.png';
 import { ReactComponent as ShrimpImage } from '../../../resources/shrimp.svg';
@@ -87,9 +88,36 @@ const contactInfoElements = contactInfo.map((info, index) => (
 ));
 
 // ---------------------------------------- //
+//                 Historie                 //
+// ---------------------------------------- //
+type HistoryItem = {
+  title: string;
+  description: string;
+  image: string;
+}
+
+const historyItems: HistoryItem[] = [
+  {
+    title: 'Reka 2021',
+    description: 'Dette var en fantastisk reka! Vi hadde det så gøy at vi glemte å ta bilder...',
+    image: '',
+  }, {
+    title: 'Reka 2020',
+    description: 'Dette var en fantastisk reka! Vi hadde det så gøy at vi glemte å ta bilder...',
+    image: '',
+  }, {
+    title: 'Reka 2019',
+    description: 'Dette var en fantastisk reka! Vi hadde det så gøy at vi glemte å ta bilder...',
+    image: '',
+  }
+];
+
+// ---------------------------------------- //
 //                Home page                 //
 // ---------------------------------------- //
 export function Home() {
+  const mapRef = useRef<HTMLDivElement>(null);
+
   return (
     <div>
 
@@ -99,16 +127,50 @@ export function Home() {
         {introShrimp}
       </div>
 
-      <Navbar elements={[<div>Arangement</div>, <div>Hype</div>, <div>Kart</div>]} />
+      <Navbar elements={[
+        {inner: <div>Program</div>},
+        {inner: <div>Hype</div>},
+        { 
+          inner: <div>Kart</div>,
+          action: (e: React.MouseEvent) => {
+            e.preventDefault();
+            mapRef.current?.scrollIntoView({ 
+              behavior: 'smooth', 
+              block: 'start'
+            });
+          }
+        }
+      ]}/>
 
       <div className={styles.page_content}> 
 
-        <div className={styles.header}>Kart</div>
-        <div className={styles.map_container}>
-          <Map/>
+        <div className={styles.page_item}>
+          <div className={styles.page_header}>Hva for noe er egt reka?</div>
+          <p>Reka er verdens beste kulturfestival av og for frivillige. Det har blitt er en årlig tradisjon at vi samles for å spise reker, drikke øl og ha det gøy. Vi har også en rekke aktiviteter, konkurranser og underholdning som vi gleder oss til å dele med deg! Føl viberasjonene med dette reke spillet:</p>
+          <div>Rekefisking kommer!</div>
         </div>
 
-        <p style={{ height: '200vh' }}>Hello REKAAA</p>
+        <div className={styles.page_item}>
+          <div className={styles.page_header}>Noe av det vi har kost oss med!</div>
+          <div className={styles.history_container}>
+            {historyItems.map((item, index) => 
+              <div className={styles.history_item} key={index}>
+                <div className={styles.history_title}>{item.title}</div>
+                <div className={styles.history_description}>{item.description}</div>
+                <img className={styles.history_image} src={item.image} alt={item.title} />
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div className={styles.page_item}>
+          <div className={styles.ref_anchor} ref={mapRef}></div>
+          <div className={styles.page_header}>Gått deg bort? Følg reke lukten!</div>
+          <div className={styles.map_container}>
+            <Map/>
+          </div>
+        </div>
+
       </div>
   
       <div className={styles.footer}>
