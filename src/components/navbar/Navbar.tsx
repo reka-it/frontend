@@ -30,9 +30,8 @@ export function Navbar({
   const spacerRef = React.useRef<HTMLDivElement>(null);
   const navbarRef = React.useRef<HTMLDivElement>(null);
 
-  const [stickyHeight, setStickyHeight] = useState(0);
+  const stickyHeight = getOffsetTop(spacerRef.current);
   const handleResize = () => {
-    setStickyHeight(getOffsetTop(spacerRef.current));
     setIsMobile(window.innerWidth <= 768);
   };
   const [isSticky, setIsSticky] = useState(false);
