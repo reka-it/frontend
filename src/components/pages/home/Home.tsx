@@ -146,7 +146,7 @@ export function Home() {
 
         <div className={styles.page_item}>
           <div className={styles.page_header}>Hva for noe er egt reka?</div>
-          <p>Reka er verdens beste kulturfestival av og for frivillige. Det har blitt er en årlig tradisjon at vi samles for å spise reker, drikke øl og ha det gøy. Vi har også en rekke aktiviteter, konkurranser og underholdning som vi gleder oss til å dele med deg! Føl viberasjonene med dette reke spillet:</p>
+          <p>Reka er verdens beste kulturfestival, av og for frivillige. Det har blitt er en årlig tradisjon at vi samles for å spise reker, drikke øl og ha det gøy. Vi har også en rekke aktiviteter, konkurranser og underholdning som vi gleder oss til å dele med deg! Føl viberasjonene med dette reke spillet:</p>
           <div>Rekefisking kommer!</div>
         </div>
 
