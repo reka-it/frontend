@@ -15,7 +15,7 @@ const introShrimpColors = ['red', 'blue', 'green', 'yellow', 'purple', 'orange',
 const introShrimpSize = 12; // rem
 const introShrimpOverlap = -0.25; // % of shrimp size the shrimp can overlap the image
 const introShrimpMargin = (1 / 2 + introShrimpOverlap) * introShrimpSize; // rem form the edge of the parent element
-const introShrimpRamdom = 5; // % of parrent size the shrimp can be randomly offset in each direction
+const introShrimpRamdom = 5; // % of parent size the shrimp can be randomly offset in each direction
 
 const seed = Math.random();
 const introShrimp = (
