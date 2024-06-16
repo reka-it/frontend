@@ -1,0 +1,26 @@
+
+.intro_card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 4rem 0 4rem 0;
+    overflow: hidden;
+    background-color: coral;
+}
+
+.intro_card_img {
+    max-width: 80vw;
+    height: auto;
+}
+
+.page_content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
