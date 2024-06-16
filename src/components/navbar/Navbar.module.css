@@ -56,10 +56,11 @@
   box-shadow: -3px 5px 0 0 #c62700;
   background: #f81753e0;
   border-radius: 0.5rem;
+    width: 125px;
 }
 
 .content_item > *:hover {
-  flex-grow: 1;
+    flex-grow:0.15;
 }
 
 .menu {
@@ -68,10 +69,11 @@
   right: 1rem;
   top: 50%;
   transform: translateY(-50%);
-  width: 1.5rem;
-  height: 1.5rem;
+  width: fit-content;
+  height: fit-content;
   border-radius: 0.5rem;
-  background-color: #cccccc;
+  background-color: #ff8080;
+
 }
 
 .menu:hover {

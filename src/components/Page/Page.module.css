@@ -1,0 +1,10 @@
+
+.page{
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    background: rgb(255 224 163) url("../../resources/background_shrimp.png") center;
+}

@@ -1,0 +1,46 @@
+
+.page_item {
+    position: relative;
+    padding: 1rem;
+    background-color: coral;
+    color: white;
+    box-shadow: -3px 5px 0 0 rgb(180, 80, 43);
+    border-radius: 0.5rem;
+    width: 80vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 1rem 0 1rem 0;
+}
+
+.section_header {
+    font-size: 2rem;
+    text-align: center;
+    font-weight: bolder;
+    padding: 1rem;
+}
+
+.sub_content {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    overflow: hidden;
+    padding: 1.5rem;
+}
+
+.section_image_wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.section_image{
+    width: 85%;
+    height: auto;
+}
