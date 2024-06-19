@@ -43,7 +43,7 @@ export function Home() {
 
     const leftItem: ReactNode = (
         <>
-            <h3 style={{color: "white", margin: "1rem"}}>Billetsalg på instagram!</h3>
+            <h3 style={{color: "white", margin: "1rem"}}>Billettsalg på instagram!</h3>
             <Icon icon={"ph:arrow-right-bold"} width={"2rem"}/>
         </>
     )
