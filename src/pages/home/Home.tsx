@@ -6,10 +6,11 @@ import {Page} from "../../components/Page/Page"
 import {IntroShrimp} from "../../components/IntroShrimp/IntroShrimp";
 import {Header} from "../../components/Header/Header";
 import {useNavigation} from "../../context/NavigationContext";
-import {useEffect} from "react";
+import React, {ReactNode, useEffect} from "react";
 import {useModal} from "../../context/ModalContextProvider";
 import {archivePageItems} from "./archive-content";
 import {ArchiveModal} from "../../components/ArchiveModal/ArchiveModal";
+import {Icon} from "@iconify/react";
 
 export function Home() {
     const { targetSection, setTargetSection } = useNavigation();
@@ -30,6 +31,24 @@ export function Home() {
         }
     }, [targetSection, setTargetSection, isModalOpen]);
 
+
+    const rightItem: ReactNode = (
+        <>
+        <a href={"https://www.instagram.com/reka_offisiell/"} style={{color: "white", margin: "1rem"}}>
+            <Icon icon={"mdi:instagram"} width="2rem" />
+            <Icon icon="tabler:click" width={"2rem"} height={"2rem"}/>
+        </a>
+        </>
+    )
+
+    const leftItem: ReactNode = (
+        <>
+            <h3 style={{color: "white", margin: "1rem"}}>Billetsalg på instagram!</h3>
+            <Icon icon={"ph:arrow-right-bold"} width={"2rem"}/>
+        </>
+    )
+
+
     return (
         <Page>
             <div className={styles.intro_card}>
@@ -39,7 +58,8 @@ export function Home() {
                     Det har blitt er en årlig tradisjon at vi samles for aktiviteter,
                     konkurranser og underholdning! Sjekk ut 'HYPE' seksjonen for å se hva som har skjedd tidligere år!</h3>
             </div>
-            <Header textContent={"REKA - 24"} positionTop={10}/>
+            <Header textContent={"REKA-24"} positionTop={10}/>
+            <Header leftItem={leftItem} positionTop={5} rightItem={rightItem}/>
             <div className={styles.page_content}>
                 {pageItemsData.map((item, index) =>
                     <PageSection content={item} key={index}/>
