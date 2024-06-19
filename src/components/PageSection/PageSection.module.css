@@ -15,7 +15,11 @@
     margin: 1rem 0 1rem 0;
     transition: transform 0.5s; /* Smooth transition */
 }
-
+.anchor{
+    position: absolute;
+    height: 10px;
+    top: -100px;
+}
 .section_header {
     font-size: 2rem;
     text-align: center;

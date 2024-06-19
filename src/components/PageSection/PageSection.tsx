@@ -9,7 +9,9 @@ type PageItemProps = {
 export function PageSection({content}:PageItemProps){
     return (
         <>
-            <div className={styles.page_item} id={content?.sectionRef}>
+
+            <div className={styles.page_item}>
+                <div className={styles.anchor} id={content?.sectionRef}/>
                 <div className={styles.section_header}>{content.header}</div>
                 {
                     content.textItem && (
@@ -17,14 +19,14 @@ export function PageSection({content}:PageItemProps){
                     )
                 }
                 {
-                content.children && (
+                    content.children && (
                         content.children
                     )
                 }
                 {
-                    content.image &&(
+                    content.image && (
                         <div className={styles.section_image_wrapper}>
-                           <img src={content.image}  alt={content.header} className={styles.section_image}/>
+                            <img src={content.image} alt={content.header} className={styles.section_image}/>
                         </div>
                     )
 
@@ -32,7 +34,7 @@ export function PageSection({content}:PageItemProps){
                 {
                     content.subContent && (
                         <div className={styles.sub_content}>
-                            {  content.subContent.map((item, index) =>
+                            {content.subContent.map((item, index) =>
                                 <Card content={item} index={index} key={index}/>
                             )}
                         </div>
