@@ -1,6 +1,5 @@
 import {card_img_21, card_img_22, reka_map_24} from "../../resources";
 import {reka_1912} from "../../resources/archive";
-import {frontend_routes} from "../../routes/frontend";
 import {ReactNode} from "react";
 import {Lineup} from "../../components/Lineup"
 import {LineupProps} from "../../components/Lineup/Lineup";
@@ -9,7 +8,7 @@ export type subcontinentType = {
     title: string;
     description: string;
     image: string;
-    navigation_target?: string;
+    dataRef?:string;
 }
 
 export const historyItemData: subcontinentType[] = [
@@ -17,19 +16,19 @@ export const historyItemData: subcontinentType[] = [
         title: 'REKA 2023',
         description: 'Dette var en fantastisk REKA!',
         image: card_img_22,
-        navigation_target: frontend_routes.archive + frontend_routes.archive_2023,
+        dataRef: "archive-2023",
     }, {
         title: 'REKA 2022',
         description: 'REKA-22 var en to-dagers begivenhet fylt med lek og kulturelle innslag. Det hele ble startet med en ' +
             'spektakulær åpningssermoni med REKE-sjef ridende på både reke og sekshjuling. ',
         image: card_img_22,
-        navigation_target: frontend_routes.archive + frontend_routes.archive_2022,
+        dataRef: "archive-2022",
     }, {
         title: 'REKA 2021',
         description: 'REKA-21 strakte seg fra lørdag til mandag og ble sparket i gang med en duft av ferske reker som spredte seg over hele Sælbu.' +
             'Arrangementet inneholdt et bredt spekter av aktiviteter, fra bading og grilling til kulturelle innslag.',
         image: card_img_21,
-        navigation_target: frontend_routes.archive + frontend_routes.archive_2021,
+        dataRef: "archive-2021",
     },
     {
         title: 'REKA 1912',
@@ -44,6 +43,7 @@ export type PageItemContent = {
     textItem?: string;
     image?: string;
     subContent?: subcontinentType[];
+    dataRef?: string;
     sectionRef?: string;
     children?: ReactNode;
 }
@@ -70,12 +70,6 @@ const LineupData: LineupProps = {
 }
 
 export const pageItemsData: PageItemContent[] = [
-    {
-        header: "Hva er REKA egentlig?",
-        textItem: "REKA er verdens beste kulturfestival, av og for frivillige. Det har blitt er en årlig tradisjon\n" +
-            "at vi samles for aktiviteter,\n" +
-            "konkurranser og underholdning! Sjekk ut 'HYPE' seksjonen for å se hva som har skjedd tidligere år!"
-    },
     {
         header: "Festivalkart 2024",
         textItem: "REKA 2024 finner sted på Sognlia i Orkdal",

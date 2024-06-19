@@ -1,13 +1,13 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import styles from "./Card.module.css"
 import {Icon} from "@iconify/react";
-import { useNavigate } from "react-router-dom";
+import {useModal} from "../../context/ModalContextProvider";
 
 type CardData = {
     title: string;
     description: string;
     image: string;
-    navigation_target?: string;
+    dataRef?: string;
 }
 
 type CardProps = {
@@ -16,21 +16,20 @@ type CardProps = {
 }
 
 export function Card({content, index}:CardProps){
-    const navigate = useNavigate();
-
-    const handleNavigate = (url: string) => {
-        navigate(url);
-    }
+    const {setDataRef, openModal} = useModal();
 
     const [visibleIndex, setVisibleIndex] = useState<number | null>(null);
     return (
+
         <div className={styles.card_wrapper}
              onMouseOver={() => setVisibleIndex(index)}
              onMouseLeave={() => setVisibleIndex(null)}
-             style={content.navigation_target ? {cursor: "pointer"}:({cursor:"auto"})}
+             style={content.dataRef ? {cursor: "pointer"}:({cursor:"auto"})}
              onClick={() => {
-                 if(content.navigation_target) {
-                     handleNavigate(content.navigation_target)}
+                 if(content.dataRef) {
+                     setDataRef(content.dataRef)
+                     openModal();
+                    }
                  }
              }
         >

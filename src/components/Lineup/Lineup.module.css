@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Titan+One&display=swap');
 .lineup_wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -15,7 +15,7 @@
 }
 
 .lineup_text_shrimp {
-    font-family: "Anton", sans-serif;
+    font-family: "Titan One", sans-serif;
     font-weight: 400;
     font-style: normal;
     padding: 0.25rem;
@@ -35,25 +35,20 @@
     transition: transform 200ms ease-in-out;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: #000000;
-    border-left: 2px solid #71001d;
-    border-right: 2px solid #71001d;
 
 }
 
 .lineup_text_no_shrimp {
-    font-family: "Anton", sans-serif;
+    font-family: "Titan One", sans-serif;
     font-weight: 400;
     font-style: normal;
     padding: 0.25rem;
     margin:5px 0 5px 0;
     display: block;
     font-size: 4em;
-
     text-transform: uppercase;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: #000000;
-    border-left: 2px solid #71001d;
-    border-right: 2px solid #71001d;
 }
 @media (max-width: 758px) {
     .lineup_text_no_shrimp {

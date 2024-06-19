@@ -1,5 +1,4 @@
 import styles from "./Lineup.module.css"
-import {Icon} from "@iconify/react";
 import {Switch} from "../Switch/Switch";
 import {useState} from "react";
 
@@ -22,17 +21,15 @@ export function Lineup({artists, fullDate, place}: LineupProps){
     };
     return (
         <>
-            <Switch exportIsOn={handleSwitchToggle}/>
             <div className={styles.time__date}>
                 <p>{fullDate}</p>
                 <p>{place}</p>
             </div>
-
+            <Switch exportIsOn={handleSwitchToggle}/>
             <div className={styles.lineup_wrapper}>
                 {artists.length > 0 && (
                     artists.map((item, index) => (
                         <div className={styles.artist_date_wrapper}>
-
                             <h1 className={isOn ? styles.lineup_text_shrimp : styles.lineup_text_no_shrimp}
                                key={item.name + index}>
                                 {item.name}
