@@ -6,6 +6,7 @@ import { RekaLogo } from '../RekaLogo/RekaLogo';
 import { Icon } from '@iconify/react';
 import { frontend_routes } from '../../routes/frontend';
 import { useNavigation } from '../../context/NavigationContext';
+import {useModal} from "../../context/ModalContextProvider";
 
 function getOffsetTop(element: HTMLElement | null): number {
     let offsetTop = 0;
@@ -34,6 +35,7 @@ export function Navbar({ className = '', elements }: NavbarProps) {
     const navigate = useNavigate();
     const location = useLocation();
     const { setTargetSection } = useNavigation();
+    const {closeModal, isModalOpen} = useModal();
 
     const stickyHeight = getOffsetTop(spacerRef.current);
     const handleResize = () => {
@@ -77,14 +79,13 @@ export function Navbar({ className = '', elements }: NavbarProps) {
     function scrollToSection(targetId: string) {
         const targetElement = document.getElementById(targetId);
         if (targetElement) {
-            targetElement.scrollIntoView({ behavior: 'smooth' });
+            targetElement.scrollIntoView({ behavior: 'smooth', block: "start" });
         }
     }
 
     function handleNavigation(targetId: string) {
         if (location.pathname !== frontend_routes.home) {
             setTargetSection(targetId);
-            navigate(frontend_routes.home);
         } else {
             scrollToSection(targetId);
         }
@@ -92,7 +93,7 @@ export function Navbar({ className = '', elements }: NavbarProps) {
 
     return (
         <div className={styles.wrapper}>
-            <div className={styles.spacer} ref={spacerRef}></div>
+            <div className={styles.spacer} ref={spacerRef}/>
             <div
                 className={`${styles.navbar} ${isSticky ? styles.sticky : ''} ${className}`}
                 ref={navbarRef}
@@ -100,6 +101,9 @@ export function Navbar({ className = '', elements }: NavbarProps) {
                 <div
                     className={styles.logo}
                     onClick={() => {
+                        if(isModalOpen) {
+                            closeModal();
+                        }
                         navigate(frontend_routes.home);
                     }}
                 >
@@ -111,6 +115,9 @@ export function Navbar({ className = '', elements }: NavbarProps) {
                             element.action?.(e);
                             if (isMobile) {
                                 setDropdownOpen(false);
+                            }
+                            if(isModalOpen){
+                                closeModal();
                             }
                             handleNavigation(element.inner.props['data-target']);
                         };

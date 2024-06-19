@@ -1,4 +1,4 @@
-import {PageItemContent} from "../home/home-content";
+import {PageItemContent} from "./home-content";
 import {frontend_routes} from "../../routes/frontend";
 import {
     festival_map_21,
@@ -10,7 +10,7 @@ import {
 } from "../../resources";
 import {program_23} from "../../resources/archive";
 
-type ArchiveContent = {
+export  type ArchiveContent = {
     archiveHeader: string,
     archiveDescription?: string,
     archiveSubSections?: PageItemContent[],

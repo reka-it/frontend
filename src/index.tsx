@@ -4,6 +4,7 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import AppRoutes from "./AppRoutes";
 import {NavigationProvider} from "./context/NavigationContext";
+import {ModalProvider} from "./context/ModalContextProvider";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -11,7 +12,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
       <NavigationProvider>
+    <ModalProvider>
           <AppRoutes/>
+    </ModalProvider>
       </NavigationProvider>
   </React.StrictMode>
 );
